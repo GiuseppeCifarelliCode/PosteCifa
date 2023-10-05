@@ -6,7 +6,7 @@
             url: "getSpedizioniToday",
             success: function (data) {
                 $.each(data, function (i, v) {
-                    var licurrent = "<li>"+ "Destinazione: "+ v.Destination + " Indirizzo: " + v.Address + " Destinatario:" + v.Destinatario + "</li>"
+                    var licurrent = "<li>" + "<span class='fw-bold'>Destinazione:</span> " + v.Destination + " <span class='fw-bold'>Indirizzo:</span> " + v.Address + "<span class='fw-bold'> Destinatario:</span> " + v.Destinatario + "</li>"
                     $("#contentContainer").append(licurrent);
                 })
             }
@@ -32,7 +32,7 @@
             url: "getTotSpedizioniByCity",
             success: function (data) {
                 $.each(data, function (i, v) {
-                    var licurrent = "<li>" + v.Citta + "- Spedizioni Totali = " + v.TotSpedizioni + "</li>"
+                    var licurrent = "<li>" + v.Citta + " - Spedizioni Totali = " + v.TotSpedizioni + "</li>"
                     $("#contentContainer").append(licurrent);
                 })
             }
