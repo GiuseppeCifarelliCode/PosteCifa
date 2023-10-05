@@ -7,7 +7,7 @@
 
 <div class="row row-cols-3 align-items-center">
     <div class="col">
-        <img src="~/Content/assets/briefcase-icon.png" class="w-100 text-bg-primary rounded-circle p-2" />
+        <img src="~/Content/assets/briefcase-icon.png" class="w-100 text-bg-primary rounded-circle p-2 shadow-lg" />
     </div>
     @using (Html.BeginForm())
     {
@@ -31,7 +31,7 @@
         </div>
     }
     <div class="col">
-        <img src="~/Content/assets/briefcase-icon.png" class="w-100 text-bg-primary rounded-circle p-2" />
+        <img src="~/Content/assets/briefcase-icon.png" class="w-100 text-bg-primary rounded-circle p-2 shadow-lg" />
     </div>
 </div>
 
@@ -50,7 +50,7 @@
             <th class="text-center">
                 @Html.DisplayNameFor(model => model.PartitaIVA)
             </th>
-            <th></th>
+            @*<th></th>*@
         </tr>
 
         @foreach (PosteCifa.Models.Azienda item in ViewBag.ListaAziende)
@@ -68,10 +68,10 @@
                 <td class="text-center">
                     @item.PartitaIVA
                 </td>
-                <td class="text-center">
+                @*<td class="text-center">
                     @Html.ActionLink("Edit", "Edit", new { id = item.Id }, new { @class = "btn btn-primary" })
                     @Html.ActionLink("Delete", "Delete", new { id = item.Id }, new { @class = "btn btn-danger" })
-                </td>
+                </td>*@
             </tr>
         }
 
