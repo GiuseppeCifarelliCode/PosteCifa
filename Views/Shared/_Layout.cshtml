@@ -1,0 +1,58 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - Applicazione ASP.NET</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body class="bg-primary">
+    <nav class="navbar navbar-expand-sm navbar-toggleable-sm bg-warning">
+        <div class="container">
+            @Html.ActionLink("PosteCifa", "Index", "Home", new { area = "" }, new { @class = "navbar-brand fw-bold text-primary" })
+            <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" title="Attiva/Disattiva spostamento" aria-controls="navbarSupportedContent"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse d-sm-inline-flex justify-content-between">
+                <ul class="navbar-nav flex-grow-1 justify-content-between">
+                    <li>@Html.ActionLink("Cerca Spedizione", "Search", "Home", new { area = "" }, new { @class = "nav-link btn btn-primary text-warning" })</li>
+                    @if (User.IsInRole("Admin"))
+                    {
+                        <li>@Html.ActionLink("Area Admin", "Index", "Admin", new { area = "" }, new { @class = "nav-link btn btn-primary text-warning" })</li>
+                        <li>@Html.ActionLink("Queries", "Query", "Admin", new { area = "" }, new { @class = "nav-link btn btn-primary text-warning" })</li>
+                        <li>@Html.ActionLink("Logout", "Logout", "Auth", new { area = "" }, new { @class = "nav-link btn btn-primary text-warning" })</li>
+                    }
+                    else
+                    {
+                        <li>@Html.ActionLink("Accesso Admin", "Login", "Auth", new { area = "" }, new { @class = "nav-link btn btn-primary text-warning" })</li>
+                    }
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="body-content bg-warning rounded-2 shadow-lg p-2 m-2">
+        @RenderBody()
+        <hr />
+        <footer>
+            <p class="fw-bold text-center my-0">Giuseppe Cifarelli</p>
+            <p class="text-center my-0">&copy; @DateTime.Now.Year</p>
+            <div class="d-flex flex-column align-items-center">
+                <p class="my-0">Contatti:</p>
+                <div class="d-flex">
+                    <a href="https://github.com/GiuseppeCifarelliCode" class="mx-2"><i class="fa-brands fa-github"></i></a>
+                    <a href="https://www.linkedin.com/in/giuseppe-cifarelli-fullstack-developer/" class="mx-2"><i class="fa-brands fa-linkedin"></i></a>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/bundles/jqueryval")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

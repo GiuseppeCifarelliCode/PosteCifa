@@ -1,0 +1,57 @@
+﻿
+@{
+    ViewBag.Title = "Search";
+}
+
+<h2 class="text-center">Cerca una Spedizione!</h2>
+
+<div class="row row-cols-3 align-items-center">
+    <div class="col">
+        <img src="~/Content/assets/search-product-icon.png" class="w-100 text-bg-primary rounded-circle p-2" />
+    </div>
+    @using (Html.BeginForm())
+    {
+        <div class="d-flex flex-column align-items-center">
+            <label for="tipoSelezione">Seleziona Tipo</label>
+            <div class="mx-2">
+                <input type="radio" id="clienteRadio" name="tipoSelezione" value="Cliente" checked> Privato
+            </div>
+            <div class="mx-2">
+                <input type="radio" id="aziendaRadio" name="tipoSelezione" value="Azienda"> Azienda
+            </div>
+        </div>
+
+        <div class="d-flex flex-column align-items-center">
+            <label for="CF" id="CFIva">Codice Fiscale</label>
+            @Html.TextBox("CF")
+
+            @Html.Label("IdSpedizione")
+            @Html.TextBox("IdSpedizione", "", new { type = "number" })
+        </div>
+
+        <div class="d-flex justify-content-center my-2">
+            <input type="submit" class="btn btn-primary text-warning" value="Cerca" />
+        </div>
+    }
+    <div class="col">
+        <img src="~/Content/assets/search-product-icon.png" class="w-100 text-bg-primary rounded-circle p-2" />
+    </div>
+</div>
+
+
+    <h4>@ViewBag.Error</h4>
+
+    @section scripts{
+        <script type="text/javascript">
+            $(document).ready(function () {
+
+                $("input[type='radio']").change(function () {
+                    if ($("#clienteRadio").prop("checked")) {
+                        $("#CFIva").text("Codice Fiscale")
+                    } else if ($("#aziendaRadio").prop("checked")) {
+                        $("#CFIva").text("Partita IVA")
+                    }
+                });
+            });
+        </script>
+    }

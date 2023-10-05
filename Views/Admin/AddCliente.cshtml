@@ -1,0 +1,91 @@
+﻿@model PosteCifa.Models.Cliente
+@{
+    ViewBag.Title = "AddCliente";
+}
+
+
+<h2 class="text-center">Aggiungi un Cliente Privato!</h2>
+
+<div class="row row-cols-3 align-items-center">
+    <div class="col">
+        <img src="~/Content/assets/male-add-icon.png" class="w-100 text-bg-primary rounded-circle p-2" />
+    </div>
+    @using (Html.BeginForm())
+    {
+        <div class="d-flex flex-column align-items-center my-2">
+            @Html.LabelFor(model => model.Name)
+            @Html.TextBoxFor(model => model.Name)
+        </div>
+
+        <div class="d-flex flex-column align-items-center my-2">
+            @Html.LabelFor(model => model.Surname)
+            @Html.TextBoxFor(model => model.Surname)
+        </div>
+
+        <div class="d-flex flex-column align-items-center my-2">
+            @Html.LabelFor(model => model.BirthDay)
+            @Html.TextBoxFor(model => model.BirthDay, "", new { type = "date" })
+        </div>
+
+        <div class="d-flex flex-column align-items-center my-2">
+            @Html.LabelFor(model => model.CF)
+            @Html.TextBoxFor(model => model.CF)
+        </div>
+
+        <div class="d-flex justify-content-center">
+            <input type="submit" class="btn btn-primary text-warning my-2" value="Aggiungi" />
+        </div>
+    }
+    <div class="col">
+        <img src="~/Content/assets/male-add-icon.png" class="w-100 text-bg-primary rounded-circle p-2" />
+    </div>
+</div>
+
+    <h4 class="text-center my-2">Lista Clienti Privati</h4>
+    <table class="table">
+        <tr>
+            <th class="text-center">
+                @Html.DisplayNameFor(model => model.Id)
+            </th>
+            <th class="text-center">
+                @Html.DisplayNameFor(model => model.Surname)
+            </th>
+            <th class="text-center">
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th class="text-center">
+                @Html.DisplayNameFor(model => model.BirthDay)
+            </th>
+            <th class="text-center">
+                @Html.DisplayNameFor(model => model.CF)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (PosteCifa.Models.Cliente item in ViewBag.ListaClienti)
+        {
+            <tr>
+                <td class="text-center">
+                    #@item.Id
+                </td>
+                <td class="text-center">
+                    @item.Surname
+                </td>
+                <td class="text-center">
+                    @item.Name
+                </td>
+                <td class="text-center">
+                    @item.BirthDay.ToShortDateString()
+                </td>
+                <td class="text-center">
+                    @item.CF
+                </td>
+                <td class="text-center">
+                    @Html.ActionLink("Edit", "Edit", new { id = item.Id }, new { @class = "btn btn-primary" })
+                    @Html.ActionLink("Delete", "Delete", new { id = item.Id }, new { @class = "btn btn-danger" })
+                </td>
+            </tr>
+        }
+
+    </table>
+

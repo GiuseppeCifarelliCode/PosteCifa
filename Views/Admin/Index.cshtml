@@ -1,0 +1,18 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+<div class="row row-cols-2">
+    <div class="col d-flex flex-column">
+        @Html.ActionLink("Aggiungi Privato", "AddCliente", "Admin", new { area = "" }, new { @class = "btn btn-primary text-warning my-2" })
+        @Html.ActionLink("Aggiungi Azienda", "AddAzienda", "Admin", new { area = "" }, new { @class = "btn btn-primary text-warning my-2" })
+    </div>
+    <div class="col d-flex flex-column">
+        @Html.ActionLink("Registra Spedizione", "AddSpedizione", "Admin", new { area = "" }, new { @class = "btn btn-primary text-warning my-2" })
+        @Html.ActionLink("Visualizza Spedizioni", "ShowSpedizioni", "Admin", new { area = "" }, new { @class = "btn btn-primary text-warning my-2" })
+    </div>
+</div>
+
+
+

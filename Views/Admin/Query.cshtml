@@ -1,0 +1,26 @@
+﻿
+@{
+    ViewBag.Title = "Query";
+}
+
+<h2 class="text-center">Seleziona la tua ricerca!</h2>
+
+<div class="row row-cols-2 justify-content-center">
+    <div class="col d-flex justify-content-center">
+        <h4 id="getSpedizioniToday" class="btn btn-primary text-warning my-2">Visualizza le spedizioni in consegna oggi</h4>
+    </div>
+    <div class="col d-flex justify-content-center">
+        <h4 id="getSpedizioniInAttesa" class="btn btn-primary text-warning my-2">Spedizioni totali in attesa di consegna</h4>
+    </div>
+    <div class="col d-flex justify-content-center">
+        <h4 id="getSpedizioniGroupByCity" class="btn btn-primary text-warning my-2">Spedizioni totali per città di destinazione</h4>
+    </div>
+</div>
+
+<div>
+    <ul id="contentContainer"></ul>
+</div>
+
+@section scripts{
+    <script src="~/Scripts/Query.js"></script>
+}

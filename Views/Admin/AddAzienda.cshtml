@@ -1,0 +1,79 @@
+﻿@model PosteCifa.Models.Azienda
+@{
+    ViewBag.Title = "AddAzienda";
+}
+
+<h2 class="text-center">Aggiungi un'Azienda!</h2>
+
+<div class="row row-cols-3 align-items-center">
+    <div class="col">
+        <img src="~/Content/assets/briefcase-icon.png" class="w-100 text-bg-primary rounded-circle p-2" />
+    </div>
+    @using (Html.BeginForm())
+    {
+        <div class="d-flex flex-column align-items-center my-2">
+            @Html.LabelFor(model => model.Nominativo)
+            @Html.TextBoxFor(model => model.Nominativo)
+        </div>
+
+        <div class="d-flex flex-column align-items-center my-2">
+            @Html.LabelFor(model => model.RagioneSociale)
+            @Html.TextBoxFor(model => model.RagioneSociale)
+        </div>
+
+        <div class="d-flex flex-column align-items-center my-2">
+            @Html.LabelFor(model => model.PartitaIVA)
+            @Html.TextBoxFor(model => model.PartitaIVA)
+        </div>
+
+        <div class="d-flex justify-content-center">
+            <input type="submit" class="btn btn-primary text-warning my-2" value="Aggiungi" />
+        </div>
+    }
+    <div class="col">
+        <img src="~/Content/assets/briefcase-icon.png" class="w-100 text-bg-primary rounded-circle p-2" />
+    </div>
+</div>
+
+    <h4 class="text-center my-2">Lista Aziende</h4>
+    <table class="table">
+        <tr>
+            <th class="text-center">
+                @Html.DisplayNameFor(model => model.Id)
+            </th>
+            <th class="text-center">
+                @Html.DisplayNameFor(model => model.Nominativo)
+            </th>
+            <th class="text-center">
+                @Html.DisplayNameFor(model => model.RagioneSociale)
+            </th>
+            <th class="text-center">
+                @Html.DisplayNameFor(model => model.PartitaIVA)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (PosteCifa.Models.Azienda item in ViewBag.ListaAziende)
+        {
+            <tr>
+                <td class="text-center">
+                    #@item.Id
+                </td>
+                <td class="text-center">
+                    @item.Nominativo
+                </td>
+                <td class="text-center">
+                    @item.RagioneSociale
+                </td>
+                <td class="text-center">
+                    @item.PartitaIVA
+                </td>
+                <td class="text-center">
+                    @Html.ActionLink("Edit", "Edit", new { id = item.Id }, new { @class = "btn btn-primary" })
+                    @Html.ActionLink("Delete", "Delete", new { id = item.Id }, new { @class = "btn btn-danger" })
+                </td>
+            </tr>
+        }
+
+    </table>
+

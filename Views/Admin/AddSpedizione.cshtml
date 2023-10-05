@@ -1,0 +1,100 @@
+﻿@model PosteCifa.Models.Spedizione
+@{
+    ViewBag.Title = "AddSpedizione";
+}
+
+<h2 class="text-center">Registra una Spedizione!</h2>
+<div class="row row-cols-3 align-items-center">
+    <div class="col">
+        <img src="~/Content/assets/secure-delivery-icon.png" class="w-100 text-bg-primary rounded-circle p-2" />
+    </div>
+    @using (Html.BeginForm())
+    {
+        <div class="d-flex flex-column align-items-center">
+            <label for="tipoSelezione">Seleziona Tipo</label>
+            <div class="mx-2">
+                <input type="radio" id="clienteRadio" name="tipoSelezione" value="Cliente"> Privato
+            </div>
+            <div class="mx-2">
+                <input type="radio" id="aziendaRadio" name="tipoSelezione" value="Azienda"> Azienda
+            </div>
+        </div>
+
+        <div class="d-flex flex-column align-items-center my-2">
+            @Html.LabelFor(model => model.DataSpedizione)
+            @Html.TextBoxFor(model => model.DataSpedizione, "", new { type = "date" })
+        </div>
+        <div class="d-flex flex-column align-items-center my-2">
+            @Html.LabelFor(model => model.Weight)
+            @Html.TextBoxFor(model => model.Weight, "", new { type = "number" })
+        </div>
+
+        <div class="d-flex flex-column align-items-center my-2">
+            @Html.LabelFor(model => model.Destination)
+            @Html.TextBoxFor(model => model.Destination)
+        </div>
+
+        <div class="d-flex flex-column align-items-center my-2">
+            @Html.LabelFor(model => model.Address)
+            @Html.TextBoxFor(model => model.Address)
+        </div>
+
+        <div class="d-flex flex-column align-items-center my-2">
+            @Html.LabelFor(model => model.Destinatario)
+            @Html.TextBoxFor(model => model.Destinatario)
+        </div>
+
+        <div class="d-flex flex-column align-items-center my-2">
+            @Html.LabelFor(model => model.Price)
+            @Html.TextBoxFor(model => model.Price, "", new { type = "number" })
+        </div>
+
+        <div class="d-flex flex-column align-items-center my-2">
+            @Html.LabelFor(model => model.DataConsegna)
+            @Html.TextBoxFor(model => model.DataConsegna, "", new { type = "date" })
+        </div>
+
+        <div id="clienteDropdown">
+            <div class="d-flex flex-column align-items-center my-2">
+                @Html.LabelFor(model => model.IdCliente)
+                @Html.DropDownList("selectedCliente", new SelectList(ViewBag.ListaClienti, "Value", "Text"), "Select Cliente")
+            </div>
+        </div>
+
+        <div id="aziendaDropdown">
+            <div class="d-flex flex-column align-items-center my-2">
+                @Html.LabelFor(model => model.IdCliente)
+                @Html.DropDownList("selectedAzienda", new SelectList(ViewBag.ListaAziende, "Value", "Text"), "Select Azienda")
+            </div>
+        </div>
+
+        <div class="d-flex justify-content-center">
+            <input type="submit" class="btn btn-primary text-warning my-2" value="Registra!" />
+        </div>
+    }
+    <div class="col">
+        <img src="~/Content/assets/secure-delivery-icon.png" class="w-100 text-bg-primary rounded-circle p-2"/>
+    </div>
+</div>
+
+@section scripts{
+    <script type="text/javascript">
+        $(document).ready(function () {
+
+            $("#clienteDropdown").hide();
+            $("#aziendaDropdown").hide();
+
+            $("input[type='radio']").change(function () {
+                if ($("#clienteRadio").prop("checked")) {
+                    $("#clienteDropdown").show();
+                    $("#aziendaDropdown").hide();
+                } else if ($("#aziendaRadio").prop("checked")) {
+                    $("#clienteDropdown").hide();
+                    $("#aziendaDropdown").show();
+                }
+            });
+        });
+    </script>
+}
+
+

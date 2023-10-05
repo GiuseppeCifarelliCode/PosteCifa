@@ -1,0 +1,123 @@
+﻿
+@{
+    ViewBag.Title = "ShowSpedizioni";
+}
+
+<h2 class="text-center">Lista Spedizioni Da Clienti Privati</h2>
+
+<table class="table">
+    <tr>
+        <th class="text-center">
+            Data Spedizione
+        </th>
+        <th class="text-center">
+            Peso(kg)
+        </th>
+        <th class="text-center">
+            Destinazione
+        </th>
+        <th class="text-center">
+            Destinatario
+        </th>
+        <th class="text-center">
+            Costo
+        </th>
+        <th class="text-center">
+            Data Consegna
+        </th>
+        <th class="text-center">
+            Cliente
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (PosteCifa.Models.Spedizione item in ViewBag.sClienti)
+    {
+        <tr>
+            <td class="text-center">
+                @item.DataSpedizione.ToShortDateString()
+            </td>
+            <td class="text-center">
+                @item.Weight
+            </td>
+            <td class="text-center">
+                @item.Destination
+            </td>
+            <td class="text-center">
+                @item.Destinatario
+            </td>
+            <td class="text-center">
+                $@item.Price
+            </td>
+            <td class="text-center">
+                @item.DataConsegna.ToShortDateString()
+            </td>
+            <td class="text-center">
+                @PosteCifa.Models.DB.getClienteById(item.IdCliente).Surname @PosteCifa.Models.DB.getClienteById(item.IdCliente).Name
+            </td>
+            <td class="text-center">
+                @Html.ActionLink("Aggiorna", "UpdateSCliente", new { id = item.Id }, new { @class = "btn btn-primary text-warning" })
+            </td>
+        </tr>
+    }
+</table>
+
+<h2 class="text-center">Lista Spedizioni Da Aziende</h2>
+
+<table class="table">
+    <tr>
+        <th class="text-center">
+            Data Spedizione
+        </th>
+        <th class="text-center">
+            Peso(kg)
+        </th>
+        <th class="text-center">
+            Destinazione
+        </th>
+        <th class="text-center">
+            Destinatario
+        </th>
+        <th class="text-center">
+            Costo
+        </th>
+        <th class="text-center">
+            Data Consegna
+        </th>
+        <th class="text-center">
+            Azienda
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (PosteCifa.Models.Spedizione item in ViewBag.sAziende)
+    {
+        <tr>
+            <td class="text-center">
+                @item.DataSpedizione.ToShortDateString()
+            </td>
+            <td class="text-center">
+                @item.Weight
+            </td>
+            <td class="text-center">
+                @item.Destination
+            </td>
+            <td class="text-center">
+                @item.Destinatario
+            </td>
+            <td class="text-center">
+                $@item.Price
+            </td>
+            <td class="text-center">
+                @item.DataConsegna.ToShortDateString()
+            </td>
+            <td class="text-center">
+                @PosteCifa.Models.DB.getAziendaById(item.IdCliente).Nominativo
+            </td>
+            <td class="text-center">
+                @Html.ActionLink("Aggiorna", "UpdateSAzienda", new { id = item.Id }, new { @class = "btn btn-primary text-warning" })
+            </td>
+        </tr>
+    }
+</table>
+
